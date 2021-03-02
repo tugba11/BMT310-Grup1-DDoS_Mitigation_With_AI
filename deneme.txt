@@ -1,0 +1,30 @@
+<?php
+require_once 'veritabani.php';
+$baglanti=baglantiolustur();
+
+if(isset($_SESSION["pg1926"]) == FALSE){
+    echo '<meta http-equiv="refresh" content="0;URL=girisyap.php">';
+    die();
+}
+
+?>
+
+<html>
+<head>
+    <title>Giriş Sayfası</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<h3 style="text-align:center;">deneme</h3>
+<?php 
+$veriler = mysqli_query ($baglanti,"SELECT * FROM kullanicilar ORDER BY id");
+while($ekranaYaz=mysqli_fetch_object($veriler)){
+    echo $ekranaYaz->id."<br>";
+    echo $ekranaYaz->isim."<br>";
+    echo $ekranaYaz->soyisim."<br>"."<hr>";
+
+}
+?>
+
+</body>
+</html>
